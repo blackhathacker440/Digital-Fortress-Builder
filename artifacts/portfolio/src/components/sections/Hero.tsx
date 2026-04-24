@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Sparkles } from "lucide-react";
-import { Shield3D } from "@/components/three/Shield";
-import { WebGLGate } from "@/components/three/CanvasFallback";
+import { Portrait } from "@/components/Portrait";
 
 export function Hero() {
   const scrollTo = (id: string) =>
@@ -126,21 +125,7 @@ export function Hero() {
             className="lg:col-span-5 relative h-[420px] sm:h-[520px] lg:h-[600px] order-first lg:order-last"
           >
             <div className="absolute inset-0 rounded-3xl">
-              <WebGLGate
-                fallback={
-                  <div className="h-full w-full flex items-center justify-center">
-                    <div className="relative h-64 w-64 rounded-full border-2 border-primary/40 animate-pulse">
-                      <div className="absolute inset-6 rounded-full border border-secondary/40" />
-                      <div className="absolute inset-12 rounded-full border border-accent/40" />
-                      <div className="absolute inset-0 flex items-center justify-center font-mono text-xs text-primary tracking-widest">
-                        SECURITY_CORE
-                      </div>
-                    </div>
-                  </div>
-                }
-              >
-                <Shield3D />
-              </WebGLGate>
+              <Portrait />
             </div>
             {/* Decorative HUD corners */}
             {[
@@ -154,9 +139,6 @@ export function Hero() {
                 className={`absolute h-6 w-6 border-primary/60 ${c}`}
               />
             ))}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] tracking-[0.3em] text-primary/70">
-              SECURITY_CORE.SYS
-            </div>
           </motion.div>
         </div>
       </div>

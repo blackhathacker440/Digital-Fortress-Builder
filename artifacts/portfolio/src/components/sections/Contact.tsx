@@ -1,14 +1,61 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Send, Github, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+import { Send, ArrowUpRight } from "lucide-react";
+import {
+  SiGithub,
+  SiYoutube,
+  SiInstagram,
+  SiTiktok,
+} from "react-icons/si";
+import { FaLinkedin } from "react-icons/fa6";
+import type { IconType } from "react-icons";
 import { SectionHeader } from "./Arsenal";
 import { useToast } from "@/hooks/use-toast";
 
-const SOCIALS = [
-  { icon: Github, label: "GitHub", href: "#", handle: "@operator" },
-  { icon: Linkedin, label: "LinkedIn", href: "#", handle: "/in/operator" },
-  { icon: Twitter, label: "Twitter / X", href: "#", handle: "@op_secure" },
-  { icon: Mail, label: "Email", href: "mailto:hello@example.dev", handle: "hello@example.dev" },
+type Social = {
+  icon: IconType;
+  label: string;
+  href: string;
+  handle: string;
+  accent: string;
+};
+
+const SOCIALS: Social[] = [
+  {
+    icon: SiGithub,
+    label: "GitHub",
+    href: "https://github.com/blackhathacker440",
+    handle: "@blackhathacker440",
+    accent: "text-primary",
+  },
+  {
+    icon: SiYoutube,
+    label: "YouTube",
+    href: "https://youtube.com/@ablack_hat_hacker?si=rKNBiZcSmJqAh3N-",
+    handle: "@ablack_hat_hacker",
+    accent: "text-accent",
+  },
+  {
+    icon: SiInstagram,
+    label: "Instagram",
+    href: "https://www.instagram.com/abhhash_440?igsh=MXN2d2Fpa2FlZWZyNA==",
+    handle: "@abhhash_440",
+    accent: "text-pink-400",
+  },
+  {
+    icon: FaLinkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/me?trk=p_mwlite_feed-secondary_nav",
+    handle: "/in/operator",
+    accent: "text-secondary",
+  },
+  {
+    icon: SiTiktok,
+    label: "TikTok",
+    href: "https://www.tiktok.com/@black_hat_hacker440?_r=1&_t=ZS-95naJhC8gpp",
+    handle: "@black_hat_hacker440",
+    accent: "text-foreground",
+  },
 ];
 
 export function Contact() {
@@ -45,7 +92,7 @@ export function Contact() {
         <SectionHeader
           eyebrow="// 07 — INITIATE CONTACT"
           title="Open a secure channel."
-          subtitle="Got a build, audit, or wild idea? Send the brief. I read every message."
+          subtitle="Got a build, audit, or wild idea? Send the brief, or hit me on any of the networks below."
         />
 
         <div className="mt-16 grid lg:grid-cols-5 gap-8">
@@ -121,6 +168,8 @@ export function Contact() {
                 <motion.a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, x: 16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -128,10 +177,12 @@ export function Contact() {
                   className="group flex items-center gap-4 rounded-xl border border-border bg-card/50 backdrop-blur-sm p-4 hover:border-primary/40 hover:bg-card/80 transition-all"
                 >
                   <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 border border-primary/30 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="h-4 w-4 text-primary" />
+                    <Icon className={`h-4 w-4 ${s.accent}`} />
                   </span>
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-foreground">{s.label}</div>
+                    <div className="text-sm font-medium text-foreground">
+                      {s.label}
+                    </div>
                     <div className="font-mono text-xs text-muted-foreground truncate">
                       {s.handle}
                     </div>
@@ -149,7 +200,7 @@ export function Contact() {
                 </span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Booking new builds and audits for Q3 → Q4. Long-term retainers welcome.
+                DM open across all platforms. I read every message.
               </p>
             </div>
           </motion.div>
